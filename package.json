@@ -1,0 +1,25 @@
+{
+  "name": "csvtojson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ValeriyPetryna/csvToJson.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ValeriyPetryna/csvToJson/issues"
+  },
+  "homepage": "https://github.com/ValeriyPetryna/csvToJson#readme",
+  "devDependencies": {
+    "jszip": "^3.2.2"
+  },
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
+}
