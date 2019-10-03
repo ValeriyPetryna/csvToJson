@@ -3,7 +3,7 @@ const csvjson = require('csvjson'); // read and parse csv files
 const moment = require('moment'); // format dates
 const JSZip = require('jszip'); // read zip archive
 
-fs.readFile('testData.zip', function(err, data) {
+fs.readFile('data.zip', function(err, data) {
   if (!err) {
     const outputData = []; // output array
     var zip = new JSZip();
@@ -17,10 +17,11 @@ fs.readFile('testData.zip', function(err, data) {
             const data = fs.readFileSync(filename, 'utf8');
             const options = {
               delimiter: '||',
-              quote: '""',
+              quote: true,
             };
-            parsedUsers = csvjson.toObject(data, options); // convert csv file to object
+            const parsedUsers = csvjson.toObject(data, options); // convert csv file to object
             let output = parsedUsers.map(user => {
+
               return {
                 name: user.name,
                 phone: user.phone.replace(/\D+/g, ''), // cut extra symbols
@@ -33,6 +34,7 @@ fs.readFile('testData.zip', function(err, data) {
                 costCenterNum: user.cc.slice(3), // slise prefix
               };
             });
+
             outputData.push(...output); // push file elements (users) to output array
             const file = JSON.stringify(outputData);
             fs.writeFileSync('output.json', file); // write output array to json file
